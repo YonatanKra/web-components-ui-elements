@@ -1,9 +1,10 @@
-import './ce-modal-window';
+import { CEModalWindow } from './ce-modal-window';
 
+window.customElements.define('ce-tested-modal-window', CEModalWindow);
 describe('app integration tests', () => {
     let element, shadowRoot;
     beforeEach(() => {
-        element = document.createElement('ce-modal-window');
+        element = document.createElement('ce-tested-modal-window');
         shadowRoot = element.shadowRoot;
         document.body.append(element);
     });
