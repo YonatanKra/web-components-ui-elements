@@ -2,9 +2,15 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
+    entry: {
+        'demo/index' : './src/demo/index.js',
+        index: './src/main.js',
+        'lib/ce-modal-window/index': './src/components/ce-modal-window/index.js'
+    },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'TDD Challenge',
             meta: {
