@@ -15,11 +15,13 @@ module.exports = {
             title: 'TDD Challenge',
             meta: {
                 viewport: 'width=device-width, initial-scale=1'
-            }
+            },
+            chunks: ['demo/index']
         })
     ],
     module: {
         rules: [
+
             // use the html loader
             {
                 test: /\.html$/,
