@@ -69,4 +69,3 @@ export class CEModalWindow extends HTMLElement{
         }
     }
 }
-window.customElements.define('ce-modal-window', CEModalWindow);
