@@ -1,7 +1,7 @@
 {
-  "name": "ce-modal-window",
+  "name": "web-components-ui-elements",
   "version": "1.0.0",
-  "description": "",
+  "description": "UI elements library based on web components",
   "main": "index.js",
   "scripts": {
     "test": "karma start config/karma.conf.js",
@@ -9,8 +9,8 @@
     "build:watch": "webpack --config config/webpack.prod.js --watch",
     "serve": "webpack-dev-server --config config/webpack.dev.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Yonatan Kra",
+  "license": "MIT",
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.3",
@@ -30,5 +30,9 @@
   },
   "dependencies": {
     "webpack-merge": "^4.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yonatankra/web-components-ui-elements.git"
   }
 }
