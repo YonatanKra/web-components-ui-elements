@@ -9,8 +9,5 @@ module.exports = merge(common, {
         open: true,
         contentBase: './dist'
     },
-    mode: "development",
-    plugins: [
-        new CleanWebpackPlugin(['dist']),
-    ]
+    mode: "development"
 });
