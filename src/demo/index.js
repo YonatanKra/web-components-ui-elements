@@ -1,4 +1,4 @@
-import "./ce-modal-window";
+import '../main';
 
 const modalWindow = document.createElement('ce-modal-window');
 modalWindow.addEventListener('click', () => {
