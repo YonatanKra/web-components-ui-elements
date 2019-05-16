@@ -4,9 +4,10 @@
   "description": "UI elements library based on web components",
   "main": "index.js",
   "scripts": {
-    "readme":  "doctoc ./README.md",
+    "readme": "doctoc ./README.md",
     "precommit": "npm run readme",
     "test": "karma start config/karma.conf.js",
+    "test:prod": "karma start config/karma.conf.prod.js",
     "build": "webpack --config config/webpack.prod.js",
     "build:watch": "webpack --config config/webpack.prod.js --watch",
     "serve": "webpack-dev-server --config config/webpack.dev.js"
