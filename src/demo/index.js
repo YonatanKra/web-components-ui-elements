@@ -11,7 +11,7 @@ button.innerText = 'Open modal';
 
 button.addEventListener('click', () => {
     modalWindow.open({
-        content: '<h1>Hello Modal</h1>',
+        content: '<h1>Hello Modal Div!!!</h1>',
         height: 50,
         width: 100
     });
