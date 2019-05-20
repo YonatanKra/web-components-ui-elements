@@ -2,14 +2,26 @@ language: node_js
 node_js:
   - "8"
 cache: yarn
-script:
-  - echo 'Deploy!!'
-  - echo 'Installing Deps!'
-  - yarn
-  - echo 'Testing!'
-  - npm run test:prod
-install:
-  - npm install -g firebase-tools
-after_success:
-  - npm run build
-  - firebase deploy --token "$FIREBASE_TOKEN"
+jobs:
+  include:
+    - stage: test
+      script:
+        - echo 'Deploy!!'
+        - echo 'Installing Deps!'
+        - yarn
+        - echo 'Testing!'
+        - yarn test:prod
+    - stage: deploy
+      script:
+        - npm install -g firebase-tools
+        - yarn build
+        - firebase deploy --token "$FIREBASE_TOKEN"
+stages:
+  - name: test
+    # require the type to be a PR
+    if: type = pull_request
+  - name: deploy
+    # require the type to be push to master
+    if: type = push AND branch = master
+
+
