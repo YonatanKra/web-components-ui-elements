@@ -1,7 +1,7 @@
 import { CEModalWindow } from './ce-modal-window';
 
 window.customElements.define('ce-tested-modal-window', CEModalWindow);
-describe('app integration tests', () => {
+describe('CE Modal Window', () => {
     let element, shadowRoot;
     beforeEach(() => {
         element = document.createElement('ce-tested-modal-window');
@@ -43,18 +43,48 @@ describe('app integration tests', () => {
             expect(content.innerHTML).toEqual(config.content);
         });
 
-        it('should set width and height according to config values', () => {
-            const content = shadowRoot.querySelector('.overlay-content');
-            const config = {
-                height: Math.round(Math.random() * 100 + 50),
-                width: Math.round(Math.random() * 100 + 50)
-            };
-            element.open(config);
-            const overlayBoundingBox = content.getBoundingClientRect();
-            expect(overlayBoundingBox.width).toEqual(config.width);
-            expect(overlayBoundingBox.height).toEqual(config.height);
+        describe(`styles`, () => {
+            it('should set width and height according to config values', () => {
+                const content = shadowRoot.querySelector('.overlay-content');
+                const config = {
+                    height: Math.round(Math.random() * 100 + 50),
+                    width: Math.round(Math.random() * 100 + 50)
+                };
+                element.open(config);
+                const overlayBoundingBox = content.getBoundingClientRect();
+                expect(overlayBoundingBox.width).toEqual(config.width);
+                expect(overlayBoundingBox.height).toEqual(config.height);
+            });
+
+            it(`should set the background according to config values`, () => {
+                const content = shadowRoot.querySelector('.overlay-content');
+                const config = {
+                    background: 'rgb(200, 50, 30)'
+                };
+                element.open(config);
+                expect(content.style.background).toEqual(config.background);
+            });
         });
 
+        describe(`styles V2`, () => {
+            it(`should set any style set in the styles property`, () => {
+                const content = shadowRoot.querySelector('.overlay-content');
+                const config = {
+                    styles: {
+                        height: Math.round(Math.random() * 100 + 50) + 'px',
+                        width: Math.round(Math.random() * 100 + 50) + 'px',
+                        background: 'rgb(200, 50, 30)',
+                        color: 'rgb(10, 60, 50)'
+                    }
+                };
+
+                element.open(config);
+
+                Object.keys(config.styles).forEach(styleProperty => {
+                    expect(content.style[styleProperty]).toEqual(config.styles[styleProperty]);
+                });
+            });
+        });
     });
 
     describe('close', () => {
@@ -63,7 +93,6 @@ describe('app integration tests', () => {
             element.open({}); // we already know it removes the class
             element.close();
             expect(overlay.classList.contains('overlay-hidden'));
-
         });
     });
 
