@@ -41,7 +41,7 @@ export class CEModalWindow extends HTMLElement{
 
     open(config) {
         const supportedStyles = ['width', 'height', 'background'];
-
+        const pxStyles = ['width', 'height'];
         if (!config) {
             return;
         }
@@ -51,18 +51,25 @@ export class CEModalWindow extends HTMLElement{
         this._content.innerHTML = config.content;
 
         supportedStyles.forEach((style) => {
-            CEModalWindow.setStyle(this._content, style, config[style]);
+            CEModalWindow.setStyle(this._content, style, config[style], pxStyles);
         });
+
+        if (config.styles) {
+            const styles = Object.keys(config.styles);
+            styles.forEach(styleProperty => {
+                CEModalWindow.setStyle(this._content, styleProperty, config.styles[styleProperty]);
+            });
+        }
     }
 
     close() {
         this._overlay.classList.add('overlay-hidden');
     }
 
-    static setStyle(element, style, value) {
-        const pxStyles = ['width', 'height'];
+    static setStyle(element, style, value, pxStyles) {
+
         if (value) {
-            if (pxStyles.indexOf(style) > -1) {
+            if (pxStyles && pxStyles.indexOf(style) > -1) {
                 value += 'px';
             }
             element.style[style] = value;
