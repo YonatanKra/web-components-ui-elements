@@ -12,8 +12,9 @@ button.innerText = 'Open modal';
 button.addEventListener('click', () => {
     modalWindow.open({
         content: '<h1>Hello Modal Div!!!</h1>',
-        height: 50,
-        width: 100
+        height: 200,
+        width: 200,
+        background: 'blue'
     });
 });
 document.body.appendChild(button);

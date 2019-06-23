@@ -43,18 +43,28 @@ describe('app integration tests', () => {
             expect(content.innerHTML).toEqual(config.content);
         });
 
-        it('should set width and height according to config values', () => {
-            const content = shadowRoot.querySelector('.overlay-content');
-            const config = {
-                height: Math.round(Math.random() * 100 + 50),
-                width: Math.round(Math.random() * 100 + 50)
-            };
-            element.open(config);
-            const overlayBoundingBox = content.getBoundingClientRect();
-            expect(overlayBoundingBox.width).toEqual(config.width);
-            expect(overlayBoundingBox.height).toEqual(config.height);
-        });
+        describe(`styles`, () => {
+            it('should set width and height according to config values', () => {
+                const content = shadowRoot.querySelector('.overlay-content');
+                const config = {
+                    height: Math.round(Math.random() * 100 + 50),
+                    width: Math.round(Math.random() * 100 + 50)
+                };
+                element.open(config);
+                const overlayBoundingBox = content.getBoundingClientRect();
+                expect(overlayBoundingBox.width).toEqual(config.width);
+                expect(overlayBoundingBox.height).toEqual(config.height);
+            });
 
+            it(`should set the background according to config values`, () => {
+                const content = shadowRoot.querySelector('.overlay-content');
+                const config = {
+                    background: 'rgb(200,50,30)'
+                };
+                element.open(config);
+                expect(content.style.background).toEqual('rgb(200, 50, 30)');
+            });
+        });
     });
 
     describe('close', () => {
@@ -63,7 +73,6 @@ describe('app integration tests', () => {
             element.open({}); // we already know it removes the class
             element.close();
             expect(overlay.classList.contains('overlay-hidden'));
-
         });
     });
 

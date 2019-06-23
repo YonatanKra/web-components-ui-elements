@@ -40,7 +40,7 @@ export class CEModalWindow extends HTMLElement{
     }
 
     open(config) {
-        const supportedStyles = ['width', 'height'];
+        const supportedStyles = ['width', 'height', 'background'];
 
         if (!config) {
             return;

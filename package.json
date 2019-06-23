@@ -1,6 +1,6 @@
 {
   "name": "web-components-ui-elements",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "UI elements library based on web components",
   "main": "index.js",
   "scripts": {
