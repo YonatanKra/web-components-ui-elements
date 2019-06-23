@@ -19,6 +19,7 @@ button.addEventListener('click', () => {
             color: 'red',
             fontSize: '36px'
         },
+        addInput: true,
     });
 });
 document.body.appendChild(button);
