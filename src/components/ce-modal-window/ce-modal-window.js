@@ -60,6 +60,11 @@ export class CEModalWindow extends HTMLElement{
                 CEModalWindow.setStyle(this._content, styleProperty, config.styles[styleProperty]);
             });
         }
+
+        if (config.addInput) {
+            const input = document.createElement('input');
+            this._content.appendChild(input);
+        }
     }
 
     close() {

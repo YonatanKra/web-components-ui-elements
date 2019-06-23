@@ -85,6 +85,21 @@ describe('CE Modal Window', () => {
                 });
             });
         });
+
+        describe(`text input`, () => {
+            it(`should insert text input to the content element`, () => {
+                const content = shadowRoot.querySelector('.overlay-content');
+                const config = {
+                    addInput: true
+                };
+
+                element.open(config);
+
+                expect(content.querySelector('input')).toBeTruthy();
+
+            });
+        });
+
     });
 
     describe('close', () => {
