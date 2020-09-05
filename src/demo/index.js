@@ -1,4 +1,5 @@
 import template from "./demo.html";
+import '@material/mwc-button';
 
 document.body.innerHTML = template;
 
