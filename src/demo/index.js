@@ -1,5 +1,5 @@
 import template from "./demo.html";
-import '@material/mwc-button';
+import '../components/mfa-button';
 
 document.body.innerHTML = template;
 
