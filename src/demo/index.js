@@ -1,25 +1,20 @@
-import '../main';
+import template from "./demo.html";
 
-const modalWindow = document.createElement('ce-modal-window');
-modalWindow.addEventListener('click', () => {
-    modalWindow.close();
-});
-document.body.appendChild(modalWindow);
+document.body.innerHTML = template;
 
-const button = document.createElement('button');
-button.innerText = 'Open modal';
+(function () {
+  const output = document.getElementById("form-output");
+  const form = document.getElementById("simple-form");
+  form.onsubmit = () => false;
+  console.log("Ready");
 
-button.addEventListener('click', () => {
-    modalWindow.open({
-        content: '<h1>Hello Modal Div!!!</h1>',
-        styles: {
-            height: 200,
-            width: 200,
-            background: 'blue',
-            color: 'red',
-            fontSize: '36px'
-        },
-        addInput: true,
-    });
-});
-document.body.appendChild(button);
+  form.addEventListener("submit", () => {
+    const formData = new FormData(form);
+
+    let outputHTML = "";
+    for (var pair of formData.entries()) {
+      outputHTML += `<div>${pair[0]}: ${pair[1]}</div>`;
+    }
+    output.innerHTML = outputHTML;
+  });
+})();
