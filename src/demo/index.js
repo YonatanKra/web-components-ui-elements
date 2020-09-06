@@ -1,5 +1,6 @@
 import template from "./demo.html";
 import '../components/mfa-button';
+import '@material/mwc-textfield';
 
 document.body.innerHTML = template;
 
