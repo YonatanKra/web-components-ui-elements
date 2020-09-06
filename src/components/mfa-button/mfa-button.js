@@ -3,10 +3,6 @@ import { Button as MWCButton } from '@material/mwc-button';
 export class MFAButton extends MWCButton {
     constructor() {
         super();
-    }
-
-    connectedCallback() {
-        super.connectedCallback();
         this.addEventListener('click', this._handleClick);
     }
 
