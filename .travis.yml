@@ -24,4 +24,4 @@ stages:
     # require the type to be push to master
     if: type = push AND branch = master
 
-    # update file
+    # update file - travis
