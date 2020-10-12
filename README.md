@@ -69,7 +69,7 @@ button.addEventListener('click', () => {
 document.body.appendChild(button);
 ```
 
-## API
+### API
 
 ### Modal Window
 #### Tag Name
